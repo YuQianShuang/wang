@@ -3,16 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>王同学今天吃什么</title>
+  <title>随机吃什么</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    #container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+
+    #title {
+      font-size: 24px;
+      margin-top: 50px;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
 </head>
 <body>
-  <h1>王同学今天吃什么</h1>
-  <p>
-    <button id="btn-generate">随机生成</button>
-  </p>
-  <div id="result"></div>
+  <div id="background"></div>
+  <div id="container">
+    <h1>随机吃什么</h1>
+    <p id="result"></p>
+  </div>
 
   <script>
+    // 动态背景
+    const background = document.getElementById('background');
+    const images = [
+      'https://unsplash.com/s/photos/beautiful-landscape',
+      'https://unsplash.com/s/photos/cityscape',
+      'https://unsplash.com/images/food'
+    ];
+    const imageIndex = Math.floor(Math.random() * images.length);
+    background.style.backgroundImage = `url(${images[imageIndex]})`;
+
+    // 随机生成内容
     const btnGenerate = document.getElementById('btn-generate');
     const result = document.getElementById('result');
 
