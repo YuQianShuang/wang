@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>王同学今天吃什么</title>
+</head>
+<body>
+  <h1>王同学今天吃什么</h1>
+  <p>
+    <button id="btn-generate">随机生成</button>
+  </p>
+  <div id="result"></div>
+
+  <script>
+    const btnGenerate = document.getElementById('btn-generate');
+    const result = document.getElementById('result');
+
+    btnGenerate.addEventListener('click', () => {
+      // 生成随机的食物类型
+      const foodTypes = ['中餐', '西餐', '快餐', '甜点'];
+      const foodType = foodTypes[Math.floor(Math.random() * foodTypes.length)];
+
+      // 生成随机的餐厅
+      const restaurants = ['老妈蹄花', '海底捞', '肯德基', '麦当劳'];
+      const restaurant = restaurants[Math.floor(Math.random() * restaurants.length)];
+
+      // 生成随机的时间段
+      const startTime = 18;
+      const endTime = 21;
+      const timeRange = `${startTime}:00 - ${endTime}:00`;
+
+      // 显示结果
+      result.innerHTML = `
+        <p>吃什么：${foodType}</p>
+        <p>去哪里吃：${restaurant}</p>
+        <p>几点去吃：${timeRange}</p>
+      `;
+    });
+  </script>
+</body>
+</html>
